@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Pass Vault</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔐 Secure Pass Vault</h1>
+    </div>
+
+    <div id="auth-section" class="section">
+      <h2>Unlock Vault</h2>
+      <input type="password" id="master-password" placeholder="Enter master password">
+      <button id="unlock-btn" class="primary-btn">Unlock</button>
+      <button id="biometric-btn" class="secondary-btn">🧬 Unlock with Biometric</button>
+      <div class="setup-link">
+        <a href="#" id="setup-link">First time? Set up master password</a>
+      </div>
+    </div>
+
+    <div id="main-section" class="section hidden">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="passwords">Passwords</button>
+        <button class="tab-btn" data-tab="generator">Generator</button>
+        <button class="tab-btn" data-tab="totp">2FA</button>
+      </div>
+
+      <div id="passwords-tab" class="tab-content active">
+        <div class="search-box">
+          <input type="text" id="search-passwords" placeholder="🔍 Search passwords...">
+        </div>
+        <button id="add-password-btn" class="primary-btn">+ Add Password</button>
+        <div id="passwords-list"></div>
+      </div>
+
+      <div id="generator-tab" class="tab-content hidden">
+        <h3>Password Generator</h3>
+        <div class="generator-options">
+          <label>
+            Length: <span id="length-value">16</span>
+            <input type="range" id="password-length" min="8" max="32" value="16">
+          </label>
+          <label>
+            <input type="checkbox" id="include-uppercase" checked> Uppercase (A-Z)
+          </label>
+          <label>
+            <input type="checkbox" id="include-lowercase" checked> Lowercase (a-z)
+          </label>
+          <label>
+            <input type="checkbox" id="include-numbers" checked> Numbers (0-9)
+          </label>
+          <label>
+            <input type="checkbox" id="include-symbols" checked> Symbols (!@#$%)
+          </label>
+        </div>
+        <div class="generated-password">
+          <input type="text" id="generated-password" readonly>
+          <button id="copy-password-btn" class="icon-btn">📋</button>
+        </div>
+        <button id="generate-btn" class="primary-btn">Generate Password</button>
+        <div id="password-strength"></div>
+      </div>
+
+      <div id="totp-tab" class="tab-content hidden">
+        <h3>TOTP 2FA</h3>
+        <button id="add-totp-btn" class="primary-btn">+ Add 2FA Code</button>
+        <div id="totp-list"></div>
+      </div>
+
+      <div class="footer">
+        <button id="settings-btn" class="icon-btn">⚙️</button>
+        <button id="lock-btn" class="icon-btn">🔒 Lock</button>
+      </div>
+    </div>
+
+    <div id="add-password-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Add New Password</h3>
+        <input type="text" id="site-url" placeholder="Website URL">
+        <input type="text" id="site-name" placeholder="Site Name">
+        <input type="text" id="username" placeholder="Username/Email">
+        <input type="password" id="password" placeholder="Password">
+        <button id="use-generated-btn" class="secondary-btn">Use Generated Password</button>
+        <div class="modal-actions">
+          <button id="save-password-btn" class="primary-btn">Save</button>
+          <button id="cancel-password-btn" class="secondary-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="add-totp-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Add 2FA Code</h3>
+        <input type="text" id="totp-name" placeholder="Service Name (e.g., Google)">
+        <input type="text" id="totp-secret" placeholder="Secret Key">
+        <div class="modal-actions">
+          <button id="save-totp-btn" class="primary-btn">Save</button>
+          <button id="cancel-totp-btn" class="secondary-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="setup-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Setup Master Password</h3>
+        <p>Create a strong master password to protect your vault.</p>
+        <input type="password" id="new-master-password" placeholder="Master Password">
+        <input type="password" id="confirm-master-password" placeholder="Confirm Master Password">
+        <div class="modal-actions">
+          <button id="setup-save-btn" class="primary-btn">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

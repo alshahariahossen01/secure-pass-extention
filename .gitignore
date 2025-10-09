@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist/
+build/
+*.crx
+*.pem
+*.zip
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+.tmp/
+temp/
+
+# Icon generation scripts (optional)
+icons/generate_icons.js
+icons/create_icons.sh
+icons/*.txt

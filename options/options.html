@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Pass Vault - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔐 Secure Pass Vault Settings</h1>
+    </div>
+
+    <div class="settings-section">
+      <h2>Security Settings</h2>
+      
+      <div class="setting-item">
+        <label for="auto-lock-timeout">Auto-Lock Timeout (minutes)</label>
+        <select id="auto-lock-timeout">
+          <option value="1">1 minute</option>
+          <option value="5">5 minutes</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+        </select>
+      </div>
+
+      <div class="setting-item">
+        <label>
+          <input type="checkbox" id="biometric-enabled">
+          Enable Biometric Authentication
+        </label>
+        <p class="setting-description">Use fingerprint or Face ID to unlock your vault (if supported by your device)</p>
+      </div>
+
+      <div class="setting-item">
+        <button id="change-master-password" class="primary-btn">Change Master Password</button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h2>Data Management</h2>
+      
+      <div class="setting-item">
+        <button id="export-data" class="secondary-btn">Export Data (Encrypted)</button>
+        <p class="setting-description">Download an encrypted backup of your passwords</p>
+      </div>
+
+      <div class="setting-item">
+        <button id="import-data" class="secondary-btn">Import Data</button>
+        <input type="file" id="import-file" accept=".json" style="display: none;">
+        <p class="setting-description">Import passwords from an encrypted backup</p>
+      </div>
+
+      <div class="setting-item">
+        <button id="clear-all-data" class="danger-btn">Clear All Data</button>
+        <p class="setting-description">⚠️ This will permanently delete all stored passwords and settings</p>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h2>About</h2>
+      <p><strong>Version:</strong> 1.0.0</p>
+      <p><strong>Features:</strong></p>
+      <ul>
+        <li>🔑 Password Generation & Management</li>
+        <li>⚡ Auto-Fill Login Forms</li>
+        <li>🧬 Biometric Authentication</li>
+        <li>⏱️ Built-in TOTP 2FA Support</li>
+        <li>🔐 Local-Only Encrypted Storage</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>All data is stored locally and encrypted with AES-256-GCM</p>
+    </div>
+  </div>
+
+  <div id="change-password-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Change Master Password</h3>
+      <input type="password" id="current-password" placeholder="Current Master Password">
+      <input type="password" id="new-password" placeholder="New Master Password">
+      <input type="password" id="confirm-password" placeholder="Confirm New Password">
+      <div class="modal-actions">
+        <button id="save-new-password" class="primary-btn">Change Password</button>
+        <button id="cancel-change-password" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
