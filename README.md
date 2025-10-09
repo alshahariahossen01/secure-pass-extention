@@ -2,6 +2,8 @@
 
 Secure Pass Vault is a full-featured browser extension designed to protect your online identity and simplify login security.
 
+![Secure Pass Vault UI Preview](https://github.com/user-attachments/assets/aeacb65c-f46f-40f4-8a83-46f61afc433f)
+
 ## ✨ Features
 
 ### 🔑 Password Generation & Management
@@ -37,6 +39,8 @@ Secure Pass Vault is a full-featured browser extension designed to protect your 
 - Zero-knowledge architecture
 
 ## 🚀 Installation
+
+📖 **[View Quick Start Guide](QUICKSTART.md)** for step-by-step instructions
 
 ### For Development
 1. Clone this repository
